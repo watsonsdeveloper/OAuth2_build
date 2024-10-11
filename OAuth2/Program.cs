@@ -1,17 +1,14 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using OAuth2;
 using OAuth2.Entities;
-using Watsons.Common;
-using Watsons.Common.ConnectionHelpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<OAuthContext>(options =>
 {
     options.UseInMemoryDatabase("AuthDb"); // Use SQL Server or any other database in production
-    options.UseOpenIddict(); //options.UseOpenIddict();
+    options.UseOpenIddict();
 });
 
 builder.Services.AddHostedService<AuthSeed>();
